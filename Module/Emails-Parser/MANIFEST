@@ -1,0 +1,16 @@
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
+lib/Emails/Parser.pm
+lib/Forum/Vanilla.pm
+lib/Forum/Vanilla/Comment.pm
+lib/Forum/Vanilla/Discussion.pm
+Makefile.PL
+MANIFEST			This list of files
+parse-emails.conf
+parse-emails.pl
