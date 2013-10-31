@@ -468,8 +468,9 @@ The following plugin may optionally be installed:
 
 	ForceGuestSignIn
 
-Note that there is as of this writing a bug in the ForceGuestSignIn plugin that
-causes the plugin not to work correctly.  In default.php, find the line labelled
+Note that there is as of this writing a bug in the ForceGuestSignIn 
+plugin that causes the plugin not to work correctly. In default.php, 
+find the line labelled 
 
 	header('location:/entry')
 	
@@ -559,8 +560,10 @@ the vanillagate user, to avoid installing a ton of CPAN modules as root.
 	
 ## Download and install the local-lib bootstrapper
 
-Download and install the latest tarball from <http://search.cpan.org/~ether/local-lib/lib/local/lib.pm> .  These instructions
-were interpolated from <http://search.cpan.org/~ether/local-lib/lib/local/lib.pm> :
+Download and install the latest tarball from 
+<http://search.cpan.org/~ether/local-lib/lib/local/lib.pm> .  
+These instructions were interpolated from 
+<http://search.cpan.org/~ether/local-lib/lib/local/lib.pm> :
 
 	$ wget http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/local-lib-1.008018.tar.gz
 	$ tar xfz local-lib*
@@ -644,19 +647,20 @@ list.
 
 ## Set up tick and parsing jobs for vanillagate user
 
-First, make sure you're logged onto an account that can edit permissions of files
-in the Vanilla web directory.
+First, make sure you're logged onto an account that can edit permissions 
+of files in the Vanilla web directory. 
 
-In order to run the Vanilla tick job, the tick program needs to be able to write to
-the directory plugins/UsefulFunctions/bin .  Yes this is a silly and unnecessary
-security hole.  Just do it and don't think about it too much.
+In order to run the Vanilla tick job, the tick program needs to be able 
+to write to the directory plugins/UsefulFunctions/bin . Yes this is a 
+silly and unnecessary security hole. Just do it and don't think about it 
+too much. 
 
 	cd /var/www/html
 	cd plugins/UsefulFunctions
 	chmod 777 bin
 	
-Log on as the vanillagate user.  Run the following commands at the shell prompt as
-the vanillagate user:
+Log on as the vanillagate user. Run the following commands at the shell 
+prompt as the vanillagate user: 
 
 	/usr/bin/perl /home/vanillagate/Emails-Parser/parse-emails.pl
 	
@@ -668,15 +672,16 @@ Next, run the following command:
 
 	/usr/bin/php -q /var/www/html/plugins/UsefulFunctions/bin/tick.php
 	
-There should be no error messages appearing.  If error messages appear in either of those
-outputs, figure out why before proceeding; error messages appearing in either command
-will cause a series of exciting cascading errors when you go to the next step.
+There should be no error messages appearing. If error messages appear in 
+either of those outputs, figure out why before proceeding; error 
+messages appearing in either command will cause a series of exciting 
+cascading errors when you go to the next step. 
 
 ## Install cron jobs for vanillagate
 
-Copy the vanillagate-job.bash file from the cron directory from this package into the
-root directory of the vanillagate user, at /home/vanillagate.  You may review the contents
-of this file if you wish.
+Copy the vanillagate-job.bash file from the cron directory from this 
+package into the root directory of the vanillagate user, at 
+/home/vanillagate. You may review the contents of this file if you wish. 
 
 Set the permissions correctly on the file:
 
