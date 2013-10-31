@@ -14,12 +14,6 @@ time will be necessary to make sure that all these parts interrelate
 and work correctly with one another.  Moreover, I just don't have a ton
 of time to support this software.
 
-The current version of the software is available from 
-(https://github.com/johnwbyrd/vanilla-mailman) .
-Comments and advice on how this software may be improved are very 
-welcome; I encourage pull requests and other patches to improve 
-stability and compatibility.
-
 # About this software
 
 This is a set of scripts and logic for integrating the 
@@ -29,6 +23,14 @@ with the GNU version of [Mailman version
 discussions_ between e-mail and an online discussion forum.  Users may
 talk with each other transparently via either the Vanilla web interface 
 or via a mailman listserver.
+
+The latest version of this documentation is available at 
+(http://johnwbyrd.github.io/vanilla-mailman/).
+The current version of the software is available from 
+(https://github.com/johnwbyrd/vanilla-mailman) .
+Comments and advice on how this software may be improved are very 
+welcome; I encourage pull requests and other patches to improve 
+stability and compatibility.
 
 # Features 
 
