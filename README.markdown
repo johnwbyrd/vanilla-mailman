@@ -388,6 +388,14 @@ Uncomment the InternalHosts file location:
 
 	InternalHosts   refile:/etc/opendkim/TrustedHosts
 	
+At this point, you will need to edit the /etc/opendkim/TrustedHosts
+file and add your local host information to the file:
+
+	127.0.0.1
+	localhost
+	localhost.localdomain
+	your.mailserver.com
+	
 Next, edit /etc/postfix/main.cf and add the following information, which queries
 the local OpenDKIM server from within postfix:
 
@@ -398,8 +406,8 @@ the local OpenDKIM server from within postfix:
 	
 Restart opendkim and then restart postfix:
 
-	# service restart opendkim
-	# service restart postfix
+	# service opendkim restart
+	# service postfix restart
 	
 ## Create a DMARC record for your domain
 
@@ -706,6 +714,13 @@ When the editor appears, add the following lines:
 Since you're editing a crontab, you can adjust the first digit in each 
 line to describe how frequently these jobs should be run. I'm running 
 them every 5 minutes here. 
+
+Your installation of php may require the date.timezone setting to be
+set in order to satiate the strtotime() function.  Edit /etc/php.ini,
+and find the date.timezone setting, and set it to one of the values
+you find in (http://www.php.net/manual/en/timezones.php) :
+
+	date.timezone = America/Los_Angeles
 
 If all goes well, you should be in business now. Try gating some e-mails 
 back and forth from the Web interface to the mailing list, and vice 
