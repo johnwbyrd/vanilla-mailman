@@ -120,7 +120,7 @@ First, install EPEL.  Generic instructions on how to set up EPEL are [here.](htt
 
 At this point, install several prerequisites at once:
 	
-	# yum install gcc make httpd mysql-devel perl-CPAN php-mysql php53-string php-cli mysql-server python-devel MySQL-python
+	# yum install gcc make httpd mysql-devel perl-CPAN php-mysql php53-string php-cli mysql-server python-devel MySQL-python memcached php-pecl-memcached php-pecl-apc
 	
 and accept all prerequisites to be installed.
 
@@ -180,8 +180,23 @@ pretty URLs, look in the section of /etc/httpd/conf/httpd.conf that starts with
 to All:
 
 	AllowOverride All
+	
+### Optional: set up memcached 
 
-Once you've edited that file, restart httpd:
+Since you've already installed php-pecl-memcached, you can let your 
+Vanilla installation use it and speed up its performance considerably. 
+
+Edit the /var/www/html/conf/config.php file and add the following 
+information: 
+	
+	// Memcache
+	$Configuration['Cache']['Enabled'] = TRUE;
+	$Configuration['Cache']['Method'] = 'memcached';
+	$Configuration['memcached']['Store'] = 'localhost';
+
+## Restart httpd
+
+Now restart httpd:
 
 	service httpd restart
 	
@@ -491,7 +506,18 @@ and replace it with
 	Redirect('entry');
 
 and your plugin would work with configurations that are installed not in 
-the root. 
+the root.
+
+Additionally, in order to get this plugin to work with mobile
+themes, add:
+
+	...
+   'RequiredApplications' => array('Vanilla' => '>=2.0.18'),
+   'MobileFriendly' => TRUE
+   );
+   
+to the end of the $PluginInfo\['ForceGuestSignIn'\] data structure.
+
 
 ## Install the Mailman plugin
 
