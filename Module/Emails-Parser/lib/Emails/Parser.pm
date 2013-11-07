@@ -437,19 +437,26 @@ sub walk_through_messages {
 
             $body = $self->remove_body_cruft($body);
             $body = $self->auto_format_body($body);
+					
+            # Don't format the body if it's null
+            if ( defined $body ) {
+                $body = markdown( $body );
+            } else {
+                $body = "\n\n";
+            }
 
             my $sbj = $self->clean_subject( $msg->subject );
             #### Subject: $sbj;
             #### Body: $body
             #### Body end
-
+			
             if ( $level == 0 ) {
                 ### Handling discussion...
                 my $discussion = Forum::Vanilla::Discussion->new;
 
                 $discussion->{'Vanilla'}            = $self->{'forum'};
                 $discussion->{'Name'}               = $sbj;
-                $discussion->{'Body'}               = markdown($body);
+                $discussion->{'Body'}               = $body;
                 $discussion->{'EmailMessageID'}     = $messageID;
                 $discussion->{'SenderEmailAddress'} = $email;
 
@@ -470,7 +477,7 @@ sub walk_through_messages {
                 my $comment = Forum::Vanilla::Comment->new;
 
                 $comment->{'Vanilla'}            = $self->{'forum'};
-                $comment->{'Body'}               = markdown($body);
+                $comment->{'Body'}               = $body;
                 $comment->{'EmailMessageID'}     = $msg->messageId;
                 $comment->{'SenderEmailAddress'} = $email;
 
