@@ -318,6 +318,21 @@ class Mailman extends Gdn_Plugin
 	private $ForeignListEmailAddress;
 
 
+    public function Base_Render_Before(&$Sender) {
+
+            if(strpos($_SERVER['REQUEST_URI'],'termsofservice') == true ||
+                    strpos($_SERVER['REQUEST_URI'],'emailavailable') ||
+                    strpos($_SERVER['REQUEST_URI'],'usernameavailable')) {
+
+            }
+
+            else if(Gdn::Session()->UserID == 0 &&
+                    strpos($_SERVER['REQUEST_URI'],'entry') == false) {
+
+                    Redirect('entry');
+            }
+    }
+
 	/* A comment has been saved.  We need to pull the details out of the comment and generate an email
 	 * message with those details and send it on to mailman.
 	*/
